@@ -6,6 +6,7 @@ namespace Es_Gestionale.PerSister
 {
     public class Class_Persister
     {
+        //public static string Connection_String = @"Server=ACADEMYNETUD07\SQLEXPRESS;Database=Es_Gestionale;Trusted_Connection=True;";
         public bool AddStudent(Class student)
         {
             var sql = @"
@@ -16,7 +17,7 @@ namespace Es_Gestionale.PerSister
                                    (@IdStudent
                                    ,@IdLesson)";
 
-            using var connection = new SqlConnection(Env_const.CONNECTION_STRING);
+            using var connection = new SqlConnection(constants.Connection_String);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdStudent", student.IdStudent);

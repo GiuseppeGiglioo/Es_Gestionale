@@ -16,7 +16,7 @@ namespace Es_Gestionale.PerSister
                                    (@IdTeacher
                                    ,@IdSubject)";
 
-            using var connection = new SqlConnection(Env_const.CONNECTION_STRING);
+            using var connection = new SqlConnection(constants.Connection_String);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdTeacher", lesson.IdTeacher);
