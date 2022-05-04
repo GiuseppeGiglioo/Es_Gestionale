@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
-using Es_Gestionale.Costants;
-using Es_Gestionale.Model;
+﻿
+using Es_Gestionale.Costante;
+using System.Data.SqlClient;
 
 namespace Es_Gestionale.PerSister
 {
@@ -16,7 +16,7 @@ namespace Es_Gestionale.PerSister
                                    (@IdExam
                                    ,@IdStudent)";
 
-            using var connection = new SqlConnection(EnvConstants.CONNECTION_STRING);
+            using var connection = new SqlConnection(Env_const.CONNECTION_STRING);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", examDetail.IdExam);

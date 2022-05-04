@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿
 using Es_Gestionale.Costante;
-using Es_Gestionale.;
+using System.Data.SqlClient;
 
 namespace Es_Gestionale.Retriever
 {
@@ -20,7 +20,7 @@ namespace Es_Gestionale.Retriever
                         where Surname =@surname";
 
 
-            using var connection = new SqlConnection(EnvConstants.CONNECTION_STRING);
+            using var connection = new SqlConnection(Env_const.CONNECTION_STRING);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@name", name);

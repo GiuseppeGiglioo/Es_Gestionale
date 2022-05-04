@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
-using Es_Gestionale.Costants;
-using Es_Gestionale.Model;
+﻿
+using Es_Gestionale.Costante;
+using System.Data.SqlClient;
 
 namespace Es_Gestionale.PerSister
 {
@@ -22,12 +22,12 @@ namespace Es_Gestionale.PerSister
                                     @Gender,
                                     @Address)";
 
-            using var connection = new SqlConnection(EnvConstants.CONNECTION_STRING);
+            using var connection = new SqlConnection(Env_const.CONNECTION_STRING);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@Name", person.Name);
             command.Parameters.AddWithValue("@SurName", person.Surname);
-            command.Parameters.AddWithValue("@BirthDay", person.BirthDay);
+            command.Parameters.AddWithValue("@Birthday", person.Birthday);
             command.Parameters.AddWithValue("@Gender", person.Gender);
             command.Parameters.AddWithValue("@Adress", person.Address);
 
