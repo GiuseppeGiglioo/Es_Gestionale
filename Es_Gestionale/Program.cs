@@ -1,4 +1,5 @@
-﻿using Es_Gestionale.Costante;
-using Es_Gestionale;
+﻿using Es_Gestionale;
+
+Console.WriteLine("Bye bye World");
 
 

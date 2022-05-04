@@ -1,5 +1,5 @@
 ﻿
-using Es_Gestionale.Costante;
+
 using System.Data.SqlClient;
 
 namespace Es_Gestionale.PerSister
@@ -20,7 +20,7 @@ namespace Es_Gestionale.PerSister
                                    ,@Credits
                                    ,@Hours)";
 
-            using var connection = new SqlConnection(constants.Connection_String);
+            using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", subject.Name);

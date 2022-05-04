@@ -1,5 +1,5 @@
 ﻿
-using Es_Gestionale.Costante;
+
 using System.Data.SqlClient;
 
 namespace Es_Gestionale.Retriever
@@ -17,7 +17,7 @@ namespace Es_Gestionale.Retriever
                         where Id =@IdClass";
 
 
-            using var connection = new SqlConnection(constants.Connection_String);
+            using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdClass", IdClass);
