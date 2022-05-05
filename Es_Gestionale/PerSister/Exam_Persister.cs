@@ -6,7 +6,13 @@ namespace Es_Gestionale.PerSister
 {
    public class Exam_Persister
     {
-        public bool AddExamDetail(ExamDetail examDetail)
+        private readonly string ConnectionString;
+        public Exam_Persister(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+
+        public int AddExam(Exam exam)
         {
             var sql = @"
                         INSERT INTO [dbo].[Teacher]
@@ -14,15 +20,15 @@ namespace Es_Gestionale.PerSister
                                    ,[IdStudent])
                              VALUES
                                    (@IdExam
-                                   ,@IdStudent)";
+                                   ,@IdStudent);
+SELECT @@IDENTITY AS 'idendtity';";
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@IdPerson", examDetail.IdExam);
-            command.Parameters.AddWithValue("@Matricola", examDetail.IdStudent);
-
-            return command.ExecuteNonQuery() > 0;
+            command.Parameters.AddWithValue("@IdPerson", exam.IdExam);
+            command.Parameters.AddWithValue("@Date", exam.Date);
+            return Convert.ToInt32(command.ExecuteNonQuery());
         }
     }
 }

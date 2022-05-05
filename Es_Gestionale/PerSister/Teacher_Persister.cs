@@ -6,7 +6,12 @@ namespace Es_Gestionale.PerSister
 {
     public class Teacher_Persister
     {
-        public bool AddTeacher(Teacher teacher)
+        private readonly string ConnectionString;
+        public Teacher_Persister(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+        public int AddTeacher(Teacher teacher)
         {
             var sql = @"
                         INSERT INTO [dbo].[Teacher]
@@ -16,7 +21,8 @@ namespace Es_Gestionale.PerSister
                              VALUES
                                    (@IdPerson
                                    ,@Matricola
-                                   ,@DataAssunzione)";
+                                   ,@DataAssunzione);
+SELECT @@IDENTITY AS 'idendtity';";
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
@@ -25,7 +31,7 @@ namespace Es_Gestionale.PerSister
             command.Parameters.AddWithValue("@Matricola", teacher.Matricola);
             command.Parameters.AddWithValue("@DataAssunzione", teacher.DataAssunzione);
 
-            return command.ExecuteNonQuery() > 0;
+            return Convert.ToInt32(command.ExecuteScalar());
         }
     }
 }

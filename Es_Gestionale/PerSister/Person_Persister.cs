@@ -6,21 +6,28 @@ namespace Es_Gestionale.PerSister
 {
     public class Person_Persister
     {
-        public bool AddPerson(Person person)
+        private readonly string ConnectionString;
+        public Person_Persister(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+
+        public int AddPerson(Person person)
         {
             var sql = @"
                         INSERT INTO [dbo].[Person]
                                    ([Name],
                                    [Surname],
-                                   [BirthDay],
+                                   [Birthday],
                                    [Gender],
                                    [Address])
                              VALUES
                                    (@Name,
                                     @Surname,
-                                    @BirthDay,
+                                    @Birthday,
                                     @Gender,
-                                    @Address)";
+                                    @Address);
+                            SELECT @@IDENTITY AS 'idendtity'; ";
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
@@ -30,9 +37,9 @@ namespace Es_Gestionale.PerSister
             command.Parameters.AddWithValue("@Birthday", person.Birthday);
             command.Parameters.AddWithValue("@Gender", person.Gender);
             command.Parameters.AddWithValue("@Adress", person.Address);
+            return Convert.ToInt32(command.ExecuteScalar());
 
-
-            return command.ExecuteNonQuery() > 0;
+            
         }
     }
 }

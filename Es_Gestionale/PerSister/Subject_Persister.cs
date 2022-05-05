@@ -6,7 +6,12 @@ namespace Es_Gestionale.PerSister
 {
     public class Subject_Persister
     {
-        public bool AddSubject(Subject subject)
+        private readonly string ConnectionString;
+        public Subject_Persister(string connectionString)
+        {
+            ConnectionString = connectionString;
+        }
+        public int AddSubject(Subject subject)
         {
             var sql = @"
                         INSERT INTO [dbo].[Subject]
@@ -18,17 +23,19 @@ namespace Es_Gestionale.PerSister
                                    (@Name
                                    ,@Description
                                    ,@Credits
-                                   ,@Hours)";
+                                   ,@Hours);
+SELECT @@IDENTITY AS 'idendtity';";
+
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", subject.Name);
             command.Parameters.AddWithValue("@Description", subject.Description);
-            command.Parameters.AddWithValue("@Credits", subject.Credits);
+            command.Parameters.AddWithValue("@CFU", subject.CFU);
             command.Parameters.AddWithValue("@Hours", subject.Hours);
 
-            return command.ExecuteNonQuery() > 0;
+            return Convert.ToInt32(command.ExecuteScalar());
         }
     }
 }
