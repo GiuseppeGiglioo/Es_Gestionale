@@ -94,7 +94,6 @@ Console.WriteLine(@"subject: {Name},id { Id}, durata {Hours}, descrizione {Descr
 Console.WriteLine(@"***********************************\n");
 Console.WriteLine(@"exam del prof {IdTeacher}, materia {IdSubject}, giorno {Date}");
 
-Console.WriteLine("Operazione inserimento avvenuta conn successo!");
 Console.ReadLine();
 
 

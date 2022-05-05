@@ -17,17 +17,17 @@ namespace Es_Gestionale.PerSister
             var sql = @"
                         INSERT INTO [dbo].[Teacher]
                                    ([IdExam]
-                                   ,[IdStudent])
+                                   ,[IdSubject])
                              VALUES
                                    (@IdExam
-                                   ,@IdStudent);
+                                   ,@IdSubject);
 SELECT @@IDENTITY AS 'idendtity';";
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", exam.IdExam);
-            command.Parameters.AddWithValue("@Date", exam.Date);
+            command.Parameters.AddWithValue("@IdSubject", exam.IdSubject);
             return Convert.ToInt32(command.ExecuteNonQuery());
         }
     }
