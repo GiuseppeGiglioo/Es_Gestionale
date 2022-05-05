@@ -6,7 +6,7 @@ namespace Es_Gestionale.Retriever
 {
     public class Class_Retriever
     {
-        public IEnumerable<Class> GetClassRoom(int IdClass)
+        public Class? GetClassRoom(int IdClass)
         {
 
             var sql = @"
@@ -22,15 +22,16 @@ namespace Es_Gestionale.Retriever
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdClass", IdClass);
             var reader = command.ExecuteReader();
-            while (reader.Read())
+            if (reader.Read())
             {
-                yield return new Class
+                return new Class
                 {
                     IdClass = Convert.ToInt32(reader["Id"]),
                     IdLesson = Convert.ToInt32(reader["IdLesson"]),
                     IdStudent = Convert.ToInt32(reader["IdStudent"]),
                 };
             }
+            return null;
 
         }
     }

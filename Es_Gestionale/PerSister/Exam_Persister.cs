@@ -28,7 +28,7 @@ SELECT @@IDENTITY AS 'idendtity';";
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", exam.IdExam);
             command.Parameters.AddWithValue("@IdSubject", exam.IdSubject);
-            return Convert.ToInt32(command.ExecuteNonQuery());
+            return Convert.ToInt32(command.ExecuteScalar());
         }
     }
 }

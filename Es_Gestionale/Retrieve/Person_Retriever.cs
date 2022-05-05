@@ -15,7 +15,7 @@ namespace Es_Gestionale.Retriever
                           ,[Gender]
                           ,[Address]
                       FROM [dbo].[Person]
-                        where Surname =@surname";
+                        where Surname =@surname and Name=@name";
 
 
             using var connection = new SqlConnection(MyConstant.ConnectionString);

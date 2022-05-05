@@ -22,7 +22,7 @@ namespace Es_Gestionale.PerSister
                              VALUES
                                    (@Name
                                    ,@Description
-                                   ,@Credits
+                                   ,@CFU
                                    ,@Hours);
 SELECT @@IDENTITY AS 'idendtity';";
 
@@ -30,7 +30,7 @@ SELECT @@IDENTITY AS 'idendtity';";
             using var connection = new SqlConnection(MyConstant.ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@IdPerson", subject.Name);
+            command.Parameters.AddWithValue("@Name", subject.Name);
             command.Parameters.AddWithValue("@Description", subject.Description);
             command.Parameters.AddWithValue("@CFU", subject.CFU);
             command.Parameters.AddWithValue("@Hours", subject.Hours);

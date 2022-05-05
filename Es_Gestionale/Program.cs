@@ -2,7 +2,7 @@
 using Es_Gestionale.PerSister;
 
 
-var ConnectionString = "Server=ACADEMYNETUD07\\SQLEXPRESS;Database=Es_Gestionale;Trusted_Connection=True;";
+var ConnectionString = MyConstant.ConnectionString;
 
 var person_Persister= new Person_Persister(ConnectionString);
 var stundent_Persister=new Student_Persister(ConnectionString);
@@ -83,7 +83,7 @@ Console.WriteLine(@"***********************************\n");
 Console.WriteLine($"persona: {person.Name}, {person.Surname}, residenza { person.Address}, nata il {person.Birthday}, genere: {person.Gender} ");
 
 Console.WriteLine(@"***********************************\n");
-Console.WriteLine($"studente{student.Name}, {student.Surname},residenza { student.Address},nata il {student.Birthday},genere {student.Gender},matricola {student.Matricola},inizio corso di laurea {student.DataImmatricolazione} ");
+Console.WriteLine($"studente{student.Name}, {student.Surname},residenza { student.Address},nata il {student.Birthday},genere {student.Gender},matricola {student.Matricola},inizio corso di laurea {student.DataIscrizione} ");
 
 Console.WriteLine(@"***********************************\n");
 Console.WriteLine($"teacher: {teacher.Name}, {teacher.Surname}, id: {teacher.Id}, genere: {teacher.Gender},matricola {teacher.Matricola},nata il {teacher.Birthday},materia {teacher.Subject}, inizio lavoro {teacher.DataAssunzione}");
