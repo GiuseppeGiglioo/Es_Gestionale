@@ -80,16 +80,16 @@ var idexam = exam_Persister.AddExam(exam);
 exam.IdExam=idexam;
 
 Console.WriteLine(@"***********************************\n");
-Console.WriteLine(@"persona: {Name}, {Surname}, residenza { Address}, nata il {Birthday}, genere: {Gender} ");
+Console.WriteLine($"persona: {person.Name}, {person.Surname}, residenza { person.Address}, nata il {person.Birthday}, genere: {person.Gender} ");
 
 Console.WriteLine(@"***********************************\n");
-Console.WriteLine(@"studente{Name}, {Surname},residenza { Address},nata il {Birthday},genere {Gender},matricola {Matricola},inizio corso di laurea {DataImmatricolazione} ");
+Console.WriteLine($"studente{student.Name}, {student.Surname},residenza { student.Address},nata il {student.Birthday},genere {student.Gender},matricola {student.Matricola},inizio corso di laurea {student.DataImmatricolazione} ");
 
 Console.WriteLine(@"***********************************\n");
-Console.WriteLine(@"teacher: {Name}, {Surname}, id: { Id}, genere: {Gender},matricola {Matricola},nata il {Birthday},materia {Subject}, inizio lavoro {DataAssunzione}");
+Console.WriteLine($"teacher: {teacher.Name}, {teacher.Surname}, id: {teacher.Id}, genere: {teacher.Gender},matricola {teacher.Matricola},nata il {teacher.Birthday},materia {teacher.Subject}, inizio lavoro {teacher.DataAssunzione}");
 
 Console.WriteLine(@"***********************************\n");
-Console.WriteLine(@"subject: {Name},id { Id}, durata {Hours}, descrizione {Description},crediti formativi {CFU}");
+Console.WriteLine($"subject: {subject.Name},id {subject.Id}, durata {subject.Hours}, descrizione {subject.Description},crediti formativi {subject.CFU}");
 
 Console.WriteLine(@"***********************************\n");
 Console.WriteLine(@"exam del prof {IdTeacher}, materia {IdSubject}, giorno {Date}");
